@@ -1,0 +1,2 @@
+"0","ExpansionEstimate <- cut(DS3$ExpansionRate, breaks = 8, label = FALSE)"
+"0","DS4 <- cbind(DS3, ExpansionEstimate)"

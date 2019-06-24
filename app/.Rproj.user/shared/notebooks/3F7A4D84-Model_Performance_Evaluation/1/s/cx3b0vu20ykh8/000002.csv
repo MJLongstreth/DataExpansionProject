@@ -1,0 +1,8 @@
+"0","actual <- c(DS3$ExpansionRate * DS3$GBPreExp)"
+"0","predicted <- c(mean(DS3$ExpansionRate) * DS3$GBPreExp)"
+"0","R2 <- 1 - (sum((actual-predicted)^2)/sum((actual-mean(actual))^2))"
+"0","R2"
+"1","[1]"
+"1"," 0.9065481"
+"1","
+"

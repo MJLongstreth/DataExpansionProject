@@ -1,0 +1,31 @@
+---
+title: "Assets"
+author: "Michael Longstreth"
+date: "May 28, 2018"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 4
+---
+
+##Assets Created and Used for this Project
+
+1. Root Project Directory ["DataExpansion"]
+2. Formal Problem Statement ["~DataExpansion/reports/01 - FPS/Client_Technology_Services_Processing_Cost_Estimator.html"]
+3. Data download of processing tickets received from CTO ["~DataExpansion/data/DS.csv"]
+4. Munge script to be ran while loading project ["~DataExpansion/munge/01-A.R]
+5. Model Performance Evaluation ["DataExpansion/reports/02 - MPE/Model_Performance_Evaluation.html"]
+6. Model Performance Linear ["DataExpansion/reports/03 - Model-Assets/model-performance-linear/model-performance-linear.html"]
+7. NEXTSTEP ["DataExpansion/reports/03 - Model-Assets/NEXTSTEPS/NEXTSTEPS.html"]
+8. Shiny Application ["DataExpansion/app/ShinyApplication.R"]
+9. Deployment URL: https://mlongstreth.shinyapps.io/CostEstimator/
+10. Packrat package directory ["DataExpansion/app/packrat/bundles/app-2018-05-29.tar.gz"]
+
+
+
+
+![](logo.png)
+
+
+
+

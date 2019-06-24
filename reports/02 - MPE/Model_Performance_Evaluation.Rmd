@@ -1,0 +1,133 @@
+---
+title: "Model Performance Evaluation"
+author: "Michael Longstreth"
+date: "April 17, 2018"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 4
+---
+
+#Solution Evalution
+Per the Formal Problem Statement, we are going to use the average data expansion of of the processing ticket information ("DS1") received from the CTO group to evaluate performance
+
+```{r include=FALSE}
+setwd("C:/Users/Mike/Documents/UC Berkeley/Data Science/csx415-project/DataExpansion")
+library('ProjectTemplate')
+load.project()
+```
+
+##Initial Inspection of Data
+###Data Expansion:
+####Outlier Identification
+After the prepropcessing script has completed, we need to perform further investigation into the data to identify possible outliers in the data expansion rate.
+
+```{r}
+plot(DS1$ExpansionRate)
+boxplot(DS1$ExpansionRate)
+hist(DS1$ExpansionRate, 
+     main="Expansion Rate", 
+     xlab="ExpansionRate", 
+     border="blue", 
+     col="green",
+     las=1,
+     prob = TRUE)
+lines(density(DS1$ExpansionRate))
+print(summary(DS1$ExpansionRate))
+
+```
+
+####Trimming Outliers
+From the initial investigation into the outliers in data expansion rate from information received from CTO, there appear to be some significant outliers, as the max is 56.623, however, 75% fo the observations are below 1.947.  The improve the quality of the analysis, I have determined to create a subset of the data to work with removing the outliers.  To create the subset, I will create a new dataset ("DS2") and I am setting the data expansion threshold at 3.25.
+
+```{r}
+DS2 <- subset(DS1, DS1$ExpansionRate < 3.25)
+plot(DS2$ExpansionRate)
+boxplot(DS2$ExpansionRate)
+hist(DS2$ExpansionRate, 
+     main="Expansion Rate", 
+     xlab="ExpansionRate", 
+     border="blue", 
+     col="green",
+     las=1,
+     prob = TRUE)
+lines(density(DS2$ExpansionRate))
+print(summary(DS2$ExpansionRate))
+```
+
+####Trimming Summary
+From cutting the outliers with data expansion rates above 3.25, the observed number of records has been reduced from 4,916 to 4,752 (difference of 164), which is acceptable.
+
+###Level of Extraction:
+####Outlier Identification
+After the prepropcessing script has completed, we need to perform further investigation into the data to identify possible outliers in the data expansion rate.
+
+```{r}
+plot(DS2$DocsPerGB)
+boxplot(DS2$DocsPerGB)
+hist(DS2$DocsPerGB,
+     main="Document Extraction", 
+     xlab="Document Extraction", 
+     border="green", 
+     col="blue",
+     las=1,
+     prob = TRUE)
+lines(density(DS2$ExpansionRate))
+summary(DS2$DocsPerGB)
+```
+
+
+####Trimming Outliers
+From the initial investigation into the outliers in documents per gigabyte("level of extraction") from information received from CTO, there appear to be some significant outliers, as the max is 345,312.5, however, 75% fo the observations are below 4,578.8.  The improve the quality of the analysis, I have determined to create a subset of the data to work with removing the outliers.  To create the subset, I will create a new dataset ("DS3") I am setting the documents per gigabyte threshold at 8,000.
+
+```{r}
+DS3 <- subset(DS2, DS2$DocsPerGB < 8000)
+plot(DS3$DocsPerGB)
+boxplot(DS3$DocsPerGB)
+hist(DS3$DocsPerGB,
+     main="Document Extraction", 
+     xlab="Document Extraction", 
+     border="blue", 
+     col="green",
+     las=1,
+     prob = TRUE)
+lines(density(DS3$ExpansionRate))
+summary(DS3$DocsPerGB)
+```
+
+####Trimming Summary
+From cutting the outliers with data expansion rates above 8,000, the observed number of records has been reduced from 4,752 to 4,317 (difference of 435), which is acceptable.
+
+##Evaluation Model
+###Naive Model
+To create the first nieve model that will be used as a base for determining the success of this project as specified in the "FPS" I retrieve the mean for the Expansion Rate.
+```{r}
+"Mean"
+mean(DS3$ExpansionRate)
+"Standard Deviation"
+sd(DS3$ExpansionRate)
+```
+
+##Root Squared
+
+```{r}
+actual <- c(DS3$ExpansionRate * DS3$GBPreExp)
+predicted <- c(mean(DS3$ExpansionRate) * DS3$GBPreExp)
+R2 <- 1 - (sum((actual-predicted)^2)/sum((actual-mean(actual))^2))
+R2
+```
+
+##Root Mean Squared Error("RMSE")
+
+```{r}
+library(Metrics)
+rmse(actual, predicted)
+```
+##Confusion Matrix
+Once I have developed a linear regression model, I will create a confusion matrix to determine if the linear regression model gives more accurate results compared to using the naive/mean model +/- 1/3 the standard deviation. [See Assignment 3]
+
+![](logo.png)
+
+
+
+

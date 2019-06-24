@@ -1,0 +1,1 @@
+To re-deploy the Shiny application, open the run the code in the "rsconnect_deployment.R" file.  Then open the ShinyApplication file and use the "Publish Document..." feature.  Name the published document "CostEstimator".

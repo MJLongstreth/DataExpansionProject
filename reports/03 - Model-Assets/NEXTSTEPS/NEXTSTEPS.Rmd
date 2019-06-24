@@ -1,0 +1,19 @@
+---
+title: "Next Steps"
+author: "Michael Longstreth"
+date: "May 28, 2018"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 4
+---
+
+##Use Regession Model for Application
+To use the regression model for the application, simply take the intercept and coefficients for the predictors generated in the "model-performance-linear.html" and update the code on line 74 of the Shiny Application @ ["~DataExpansion/app/ShinyApplication.R"].
+
+
+![](logo.png)
+
+
+
+

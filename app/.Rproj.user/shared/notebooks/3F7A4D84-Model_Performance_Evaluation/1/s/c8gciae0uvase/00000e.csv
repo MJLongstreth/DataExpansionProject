@@ -1,0 +1,7 @@
+"0","hist(DS2$DocsPerGB,"
+"0","     main=""Document Extraction"", "
+"0","     xlab=""Document Extraction"", "
+"0","     border=""green"", "
+"0","     col=""blue"","
+"0","     las=1,"
+"0","     prob = TRUE)"

@@ -1,0 +1,7 @@
+"0","hist(DS2$ExpansionRate, "
+"0","     main=""Expansion Rate"", "
+"0","     xlab=""ExpansionRate"", "
+"0","     border=""blue"", "
+"0","     col=""green"","
+"0","     las=1,"
+"0","     prob = TRUE)"

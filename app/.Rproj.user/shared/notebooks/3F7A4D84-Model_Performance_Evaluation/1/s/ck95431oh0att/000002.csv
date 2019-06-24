@@ -1,0 +1,66 @@
+"0","setwd(""C:/Users/Mike/Documents/UC Berkeley/Data Science/csx415-project/DataExpansion"")"
+"2","The working directory was changed to C:/Users/Mike/Documents/UC Berkeley/Data Science/csx415-project/DataExpansion inside a notebook chunk. The working directory will be reset when the chunk is finished running. Use the knitr root.dir option in the setup chunk to change the working directory for notebook chunks."
+"0","library('ProjectTemplate')"
+"0","load.project()"
+"2","Project name: DataExpansion
+"
+"2","Loading project configuration
+"
+"2","Autoloading packages
+"
+"2"," Loading package: reshape2
+"
+"2"," Loading package: plyr
+"
+"2"," Loading package: tidyverse
+"
+"2"," Loading package: stringr
+"
+"2"," Loading package: lubridate
+"
+"2"," Loading package: anytime
+"
+"2"," Loading package: car
+"
+"2"," Loading package: caret
+"
+"2"," Loading package: caTools
+"
+"2"," Loading package: lattice
+"
+"2"," Loading package: corrplot
+"
+"2"," Loading package: httpuv
+"
+"2"," Loading package: shiny
+"
+"2"," Loading package: ggplot2
+"
+"2"," Loading package: knitr
+"
+"2"," Loading package: rmarkdown
+"
+"2"," Loading package: Metrics
+"
+"2"," Loading package: rsconnect
+"
+"2"," Loading package: packrat
+"
+"2","Autoloading helper functions
+"
+"2"," Running helper script: globals.R
+"
+"2"," Running helper script: helpers.R
+"
+"2","Autoloading data
+"
+"2"," Loading cached data set: processing.tickets.stats
+"
+"2"," Loading cached data set: DS
+"
+"2","Munging data
+"
+"2"," Running preprocessing script: 01-A.R
+"
+"2","NAs introduced by coercion"
+"2","NAs introduced by coercion"

@@ -1,0 +1,2 @@
+"0","DocsPerGBEstimate <- cut(DS4$DocsPerGB, breaks = 3, label = FALSE)"
+"0","DS4 <- cbind(DS4, DocsPerGBEstimate)"

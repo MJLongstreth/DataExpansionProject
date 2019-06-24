@@ -1,0 +1,61 @@
+---
+title: "Model Performance Linear"
+author: "Michael Longstreth"
+date: "May 28, 2018"
+output:
+  html_document:
+    toc: TRUE
+    toc_depth: 4
+---
+
+```{r include=FALSE}
+setwd("C:/Users/Mike/Documents/UC Berkeley/Data Science/csx415-project/DataExpansion")
+library('ProjectTemplate')
+load.project()
+DS2 <- subset(DS1, DS1$ExpansionRate < 3.25)
+DS3 <- subset(DS2, DS2$DocsPerGB < 8000)
+```
+
+
+##Creating Predictors
+As mentioned in the formal problem statement, the number of predictors that are known prior to processing the data is limited to the amount of data pre-expansion and the CTS Analysts industry knowledge of the data source and the level of extraction for both file type and type of extraction specified in the processing request.  There is no correlation between the data volume and the expansion rate.  Previously the CTO department has not been tracking the file type of ESI that is being processed.  In order to create some predictors that will then be estimated by Analysts in preparing cost estimates, we will create groupings for the data.
+
+###Create Bins for Expansion Rate
+By grouping the expansion rate into bins, the exact level of expansion will not be known, but will give Analysts more flexibility in creating assumptions.  The different levels should then be used based on the Analysts knowledge of the source of the collection.  For instance, flat image files would rank near 1 and highly compressed PST files ranking towards the top.
+
+```{r}
+ExpansionEstimate <- cut(DS3$ExpansionRate, breaks = 8, label = FALSE)
+DS4 <- cbind(DS3, ExpansionEstimate)
+```
+
+###Create Bins for Extraction Levl
+By grouping the extraction level into bins, the exact level of extraction will not be known, but will give Analysts more flexibility in creating assumptions.  The different levels should then be used based on the Analysts knowledge of the source of the collection.  For instance, flat image files would rank near 1 and PowerPoint files with large numbers of embedded objets and images would rank near the top.
+
+```{r}
+DocsPerGBEstimate <- cut(DS4$DocsPerGB, breaks = 3, label = FALSE)
+DS4 <- cbind(DS4, DocsPerGBEstimate)
+```
+
+##Reduce Data to Predictors & Response Variable
+To build the simple linear regression model that we will use in the application, we reduce the data to just what will be used in the model, as most of the information in the current data set, is generated after processing and cannot be used, because it is unknown at the time of processing.
+```{r}
+DS5 <- DS4[c(5, 11, 12, 10, 7)]
+head(DS5)
+```
+
+##Basic Linear Regression Model
+
+
+```{r}
+model <- lm(DS5$ExpansionRate ~ DS5$ExpansionEstimate + log(DS5$DocsPerGBEstimate))
+summary(model)
+```
+
+As expected, the results of the model are very good and we will use this in buidling the application to predict cost.  Again, since we don't have the predictors prior to processing, it will fall to the CTS Analyst to use their best judgement indetermined the valies to be used.
+
+
+![](logo.png)
+
+
+
+

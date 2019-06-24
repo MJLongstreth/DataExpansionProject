@@ -1,0 +1,12 @@
+name: CostEstimator
+title: CostEstimator
+username:
+account: mlongstreth
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 350102
+bundleId: 1397108
+url: https://mlongstreth.shinyapps.io/CostEstimator/
+when: 1527538611.36731
+asMultiple: FALSE
+asStatic: FALSE
